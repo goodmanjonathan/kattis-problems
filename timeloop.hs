@@ -1,4 +1,4 @@
-f 1 = putStrLn ((show 1) ++ " Abracadabra")
+f 0 = return ()
 f n = do
     f (n - 1)
     putStrLn ((show n) ++ " Abracadabra")
