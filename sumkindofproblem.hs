@@ -1,5 +1,3 @@
-import Data.List (foldl')
-
 f :: Int -> IO ()
 f 0 = do return ()
 f p = do
