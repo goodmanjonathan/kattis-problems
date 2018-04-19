@@ -1,6 +1,10 @@
 import Data.List
 import qualified Data.Map.Lazy as Map
 
+charTally :: String -> Map.Map Char Int
+charTally s = foldl folder Map.empty s
+    where folder map k = Map.insert k ((Map.findWithDefault 0 k map) + 1) map
+
 isPalindrome :: String -> Bool
 isPalindrome "" = True
 isPalindrome (_:"") = True
@@ -14,14 +18,9 @@ isAnagramOf anagram s =
     -- tally the number of occurences of each character in `anagram` and compare
     -- to that of `s`
     charTally anagram == charTally s
-    where charTally s = foldl folder Map.empty s
-          folder map k = Map.insert k ((Map.findWithDefault 0 k map) + 1) map
 
 isPeragram :: String -> Bool
-isPeragram s =
-    -- FIXME: generating all permutations is abysmally slow
-    let palindromes = [p | p <- permutations s, isPalindrome p] in
-        not . null $ palindromes
+isPeragram s = not . Map.null $ Map.filter (\v -> v > 1 && isOdd) (charTally s)
 
 minDeleteBecomePeragram :: String -> Int
 minDeleteBecomePeragram s
