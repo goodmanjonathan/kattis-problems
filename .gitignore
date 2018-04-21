@@ -55,7 +55,7 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 
-*/a.out
+*.out
 *.com
 *.class
 *.dll
