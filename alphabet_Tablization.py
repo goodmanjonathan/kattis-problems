@@ -27,6 +27,5 @@ def lcs(X , Y):
   
   
 # Driver program to test the above function
-X = "AGGTAB"
-Y = "GXTXAYB"
-print "Length of LCS is ", lcs(X, Y) 
+X = raw_input()
+print 26 - len(lcs(X, "abcdefghijklmnopqrstuvwxyz")) 
